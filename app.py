@@ -26,7 +26,7 @@ st.write("---")
 # ---- Charts Section ----
 
 st.subheader("AQI Trend Over Time")
-st.line_chart(df.set_index("Date")["aqi"])
+st.line_chart(df.set_index("date")["aqi"])
 
 st.subheader("AQI Distribution (Histogram)")
 fig, ax = plt.subplots()
