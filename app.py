@@ -10,7 +10,7 @@ st.title("India Air Quality Dashboard")
 df = pd.read_csv("india_city_aqi_2015_2023.csv")
 
 # Convert Date
-df["Date"] = pd.to_datetime(df["Date"])
+df["date"] = pd.to_datetime(df["date"])
 
 st.subheader("Dataset Preview")
 st.dataframe(df.head())
