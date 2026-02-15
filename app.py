@@ -18,7 +18,7 @@ st.dataframe(df.head())
 # ---- KPI Cards ----
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Records", len(df))
-col2.metric("Cities", df["City"].nunique())
+col2.metric("Cities", df["city"].nunique())
 col3.metric("Average AQI", round(df["AQI"].mean(),2))
 
 st.write("---")
@@ -34,7 +34,7 @@ ax.hist(df["AQI"], bins=30)
 st.pyplot(fig)
 
 st.subheader("Average AQI by City")
-city_avg = df.groupby("City")["AQI"].mean().sort_values()
+city_avg = df.groupby("city")["AQI"].mean().sort_values()
 st.bar_chart(city_avg)
 
 st.subheader("Top 10 Most Polluted Cities")
