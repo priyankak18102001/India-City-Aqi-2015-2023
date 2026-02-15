@@ -19,22 +19,22 @@ st.dataframe(df.head())
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Records", len(df))
 col2.metric("Cities", df["city"].nunique())
-col3.metric("Average AQI", round(df["AQI"].mean(),2))
+col3.metric("Average AQI", round(df["aqi"].mean(),2))
 
 st.write("---")
 
 # ---- Charts Section ----
 
 st.subheader("AQI Trend Over Time")
-st.line_chart(df.set_index("Date")["AQI"])
+st.line_chart(df.set_index("Date")["aqi"])
 
 st.subheader("AQI Distribution (Histogram)")
 fig, ax = plt.subplots()
-ax.hist(df["AQI"], bins=30)
+ax.hist(df["aqi"], bins=30)
 st.pyplot(fig)
 
 st.subheader("Average AQI by City")
-city_avg = df.groupby("city")["AQI"].mean().sort_values()
+city_avg = df.groupby("city")["aqi"].mean().sort_values()
 st.bar_chart(city_avg)
 
 st.subheader("Top 10 Most Polluted Cities")
@@ -42,30 +42,30 @@ top_cities = city_avg.sort_values(ascending=False).head(10)
 st.bar_chart(top_cities)
 
 st.subheader("PM2.5 Trend")
-st.line_chart(df.set_index("Date")["PM2.5"])
+st.line_chart(df.set_index("date")["PM2.5"])
 
 st.subheader("PM10 Trend")
-st.line_chart(df.set_index("Date")["PM10"])
+st.line_chart(df.set_index("date")["PM10"])
 
 st.subheader("NO2 Trend")
-st.line_chart(df.set_index("Date")["NO2"])
+st.line_chart(df.set_index("date")["NO2"])
 
 st.subheader("SO2 Trend")
-st.line_chart(df.set_index("Date")["SO2"])
+st.line_chart(df.set_index("date")["SO2"])
 
 st.subheader("CO Trend")
-st.line_chart(df.set_index("Date")["CO"])
+st.line_chart(df.set_index("date")["CO"])
 
 st.subheader("O3 Trend")
-st.line_chart(df.set_index("Date")["O3"])
+st.line_chart(df.set_index("date")["O3"])
 
 st.subheader("Correlation Heatmap")
-corr = df[["AQI","PM2.5","PM10","NO2","SO2","CO","O3"]].corr()
+corr = df[["aqi","PM2.5","PM10","NO2","SO2","CO","O3"]].corr()
 st.dataframe(corr)
 
 st.subheader("AQI Box Plot")
 fig, ax = plt.subplots()
-df.boxplot(column="AQI", ax=ax)
+df.boxplot(column="aqi", ax=ax)
 st.pyplot(fig)
 
 st.subheader("Monthly AQI Trend")
